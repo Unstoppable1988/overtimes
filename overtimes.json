@@ -1,0 +1,20 @@
+{
+  "overtimes": [
+    {
+      "number": 1,
+      "start": "2022-01-07T07:50:00.000Z",
+      "end": "2022-01-07T08:40:00.000Z",
+      "id": "9a46ebfd-5f81-4598-b273-4e21707f41dc",
+      "overtime": 50,
+      "paid": false
+    },
+    {
+      "number": 2,
+      "start": "2022-01-13T16:00:00.000Z",
+      "end": "2022-01-13T16:40:00.000Z",
+      "id": "11f95cec-2fba-4991-8cc9-8dcc8305f724",
+      "overtime": 40,
+      "paid": false
+    }
+  ]
+}
