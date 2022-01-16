@@ -1,9 +1,8 @@
 import OvertimesTable from '../OvertimesTable/OvertimesTable';
-import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{"margin-top" : "3em"}}>
         <OvertimesTable/>
     </div>
   );

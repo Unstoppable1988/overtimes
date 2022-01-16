@@ -12,6 +12,10 @@ const StyledErrorMessage = styled(ErrorMessage)`
         display: block;
 `;
 
+const StyledField = styled(Field)`
+        margin-bottom: 1em;
+`;
+
 registerLocale('en-GB', enGB);
 
 const DatePickerField = ({ ...props }) => {
@@ -34,6 +38,10 @@ const DatePickerField = ({ ...props }) => {
     );
 };
 
+const StyledDatePickerField = styled(DatePickerField)`
+        margin-bottom: 1em;
+`;
+
 const AddOvertimeForm = ({onAdd}) => {
 
     return(
@@ -50,13 +58,13 @@ const AddOvertimeForm = ({onAdd}) => {
         >
             <Form autoComplete="off">
                 <label htmlFor="number" className="form-label">Number</label>
-                <Field className="form-control" type="number" name="number" />
+                <StyledField className="form-control" type="number" name="number" />
                 <StyledErrorMessage className="invalid-feedback" name="number" component="div" />
                 <label htmlFor="start" className="form-label">Start date and time</label>
-                <DatePickerField className="form-control" type="text" name="start" />
+                <StyledDatePickerField className="form-control" type="text" name="start" />
                 <StyledErrorMessage className="invalid-feedback" name="start" component="div" />
                 <label htmlFor="end" className="form-label">End date and time</label>
-                <DatePickerField className="form-control" type="text" name="end" />
+                <StyledDatePickerField className="form-control" type="text" name="end" />
                 <StyledErrorMessage className="invalid-feedback" name="end" component="div" />
                 <button type="submit" className="btn btn-primary">
                 Submit

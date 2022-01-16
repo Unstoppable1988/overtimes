@@ -34,13 +34,13 @@ const OvertimesTable = () => {
     }
 
     const onAdd = (data) => {
-        const overtime = calculateOvertime(data);
-        let newItem = {...data, overtime, paid: false};
-        // request(`http://localhost:3001/overtimes/`, "POST", JSON.stringify(newItem))
-        console.log(overtimes);
-        console.log([...overtimes, newItem]);
-        // .then(setOvertimes([...overtimes, newItem]))
-        // .catch(err => console.log(err));
+        const overtime = calculateOvertime(data),
+            start = timeConverter(Date.parse(data.start)),
+            end = timeConverter(Date.parse(data.end));
+        let newItem = {...data, start, end, overtime, paid: false};
+        request(`http://localhost:3001/overtimes/`, "POST", JSON.stringify(newItem))
+        .then(setOvertimes([...overtimes, newItem]))
+        .catch(err => console.log(err));
     }
 
     const calculateOvertime = (data) => {
@@ -49,6 +49,18 @@ const OvertimesTable = () => {
             overtime = (end - start) / 60000;
         return overtime;
     }
+
+    const timeConverter = (timestamp) => {
+        const date = new Date(timestamp);
+        const formatDate = param => param < 10 ? `0${param}` : param;
+        const year = date.getFullYear();
+        let month = formatDate(date.getMonth()+1),
+            day = formatDate(date.getDate()),
+            hour = formatDate(date.getHours()),
+            min = formatDate(date.getMinutes());
+        const time = `${day}.${month}.${year} ${hour}:${min}`;
+        return time;
+      }
 
     const renderOvertimes = (overtimes) => {
         const items = overtimes.map(item => {
