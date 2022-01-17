@@ -46,9 +46,9 @@ const AddOvertimeForm = ({onAdd}) => {
 
     return(
         <Formik
-            initialValues={{ number: '', start: '', end: '', }}
+            initialValues={{ note: '', start: '', end: '', }}
             validationSchema={yup.object({
-                number: yup.number().required(),
+                note: yup.string(),
                 start: yup.string().required(),
                 end: yup.string().required(),
             })}
@@ -57,15 +57,15 @@ const AddOvertimeForm = ({onAdd}) => {
             }}
         >
             <Form autoComplete="off">
-                <label htmlFor="number" className="form-label">Number</label>
-                <StyledField className="form-control" type="number" name="number" />
-                <StyledErrorMessage className="invalid-feedback" name="number" component="div" />
                 <label htmlFor="start" className="form-label">Start date and time</label>
                 <StyledDatePickerField className="form-control" type="text" name="start" />
                 <StyledErrorMessage className="invalid-feedback" name="start" component="div" />
                 <label htmlFor="end" className="form-label">End date and time</label>
                 <StyledDatePickerField className="form-control" type="text" name="end" />
                 <StyledErrorMessage className="invalid-feedback" name="end" component="div" />
+                <label htmlFor="note" className="form-label">Note</label>
+                <StyledField className="form-control" name="note" component="textarea" />
+                <StyledErrorMessage className="invalid-feedback" name="note" component="div" />
                 <button type="submit" className="btn btn-primary">
                 Submit
                 </button>

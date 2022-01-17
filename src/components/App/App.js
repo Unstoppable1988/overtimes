@@ -2,7 +2,7 @@ import OvertimesTable from '../OvertimesTable/OvertimesTable';
 
 function App() {
   return (
-    <div className="App" style={{"margin-top" : "3em"}}>
+    <div className="App" style={{"marginTop" : "3em"}}>
         <OvertimesTable/>
     </div>
   );

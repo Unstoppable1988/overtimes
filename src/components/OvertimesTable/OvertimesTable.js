@@ -34,10 +34,12 @@ const OvertimesTable = () => {
     }
 
     const onAdd = (data) => {
+        console.log(data);
         const overtime = calculateOvertime(data),
             start = timeConverter(Date.parse(data.start)),
-            end = timeConverter(Date.parse(data.end));
-        let newItem = {...data, start, end, overtime, paid: false};
+            end = timeConverter(Date.parse(data.end)),
+            number = overtimes.length > 0 ? overtimes[overtimes.length-1].number+1 : 1;
+        let newItem = {...data, number, start, end, overtime, paid: false};
         request(`http://localhost:3001/overtimes/`, "POST", JSON.stringify(newItem))
         .then(setOvertimes([...overtimes, newItem]))
         .catch(err => console.log(err));
@@ -70,6 +72,7 @@ const OvertimesTable = () => {
                     <Col>{item.start}</Col>
                     <Col>{item.end}</Col>
                     <Col>{item.overtime}</Col>
+                    <Col className="col-4">{item.note}</Col>
                     <Col><button className="btn btn-primary" onClick={() => onPaid(item.id)}>Paid</button></Col>
                     <Col><button className="btn btn-primary" onClick={() => onDelete(item.id)}>Delete</button></Col>
                 </Row>
@@ -87,10 +90,10 @@ const OvertimesTable = () => {
     return (
         <Container>
             <Row>
-                <Col>
+                <Col className="col-8">
                     {items}
                 </Col>
-                <Col>
+                <Col className="col-4">
                     <AddOvertimeForm onAdd={onAdd}/>
                 </Col>
             </Row>
